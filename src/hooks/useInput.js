@@ -10,6 +10,7 @@ export const useInput = initialValue => {
     } else {
       value = e;
     }
+
     const name = label || e.target.name;
     switch (name) {
       case "name":

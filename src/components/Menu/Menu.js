@@ -7,7 +7,8 @@ import {
   Popconfirm,
   Input,
   InputNumber,
-  Collapse
+  Collapse,
+  message
 } from "antd";
 import ModalCreater from "../ModalCreater/ModalCreater";
 import { useInput } from "../../hooks/useInput";
@@ -62,9 +63,12 @@ const Menu = ({ menu, index, handleRemoveMenu, handleEditMenu }) => {
 
   const handleSubmitEditForm = e => {
     e.preventDefault();
-    // TODO: validation
-    handleEditMenu(index, value);
-    handleCloseEditModal();
+    if (!value.name || !value.description) {
+      message.error("name or description cannot be empty");
+    } else {
+      handleEditMenu(index, value);
+      handleCloseEditModal();
+    }
   };
 
   return (
