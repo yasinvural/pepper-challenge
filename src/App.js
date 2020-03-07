@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import Header from "./components/Header/Header";
 import Menu from "./components/Menu/Menu";
+import { message } from "antd";
 
 const apiUrl = "http://frontend-challenge-api.pepperhq.com/menu.json";
 
@@ -29,6 +30,7 @@ const App = () => {
 
   const handleRemoveMenu = index => {
     setMenuItems(items => items.filter((item, i) => i !== index));
+    message.success("menu deleted");
   };
 
   const handleEditMenu = (index, menu) => {
@@ -40,6 +42,7 @@ const App = () => {
     });
 
     setMenuItems(updatedMenuItems);
+    message.success("menu updated");
   };
 
   return (

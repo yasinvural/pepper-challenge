@@ -93,7 +93,7 @@ const Menu = ({ menu, index, handleRemoveMenu, handleEditMenu }) => {
       <ModalCreater
         title="Menu Update"
         visible={openEditModal}
-        onCancel={handleCloseEditModal}
+        handleCancel={handleCloseEditModal}
       >
         <form onSubmit={handleSubmitEditForm}>
           <div>

@@ -65,7 +65,7 @@ const Header = ({ locationTitle, address, handleEditHeader }) => {
       <ModalCreater
         title="Title & Address Update"
         visible={openEditModal}
-        onCancel={handleCloseEditModal}
+        handleCancel={handleCloseEditModal}
       >
         <form onSubmit={handleSubmitEditForm}>
           <div>
