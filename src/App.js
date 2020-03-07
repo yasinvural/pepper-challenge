@@ -7,7 +7,6 @@ import Menu from "./components/Menu/Menu";
 const apiUrl = "http://frontend-challenge-api.pepperhq.com/menu.json";
 
 const App = () => {
-  const [locationId, setLocationId] = useState("");
   const [locationTitle, setLocationTitle] = useState("");
   const [address, setAddress] = useState("");
   const [menuItems, setMenuItems] = useState([]);
@@ -15,9 +14,7 @@ const App = () => {
   useEffect(() => {
     async function fetchMenu() {
       const { data } = await axios.get(apiUrl);
-      const { locationId, locationTitle, address, items } = data;
-      console.log(items);
-      setLocationId(locationId);
+      const { locationTitle, address, items } = data;
       setLocationTitle(locationTitle);
       setAddress(address);
       setMenuItems(items);
@@ -30,6 +27,21 @@ const App = () => {
     setAddress(address);
   };
 
+  const handleRemoveMenu = index => {
+    setMenuItems(items => items.filter((item, i) => i !== index));
+  };
+
+  const handleEditMenu = (index, menu) => {
+    const updatedMenuItems = menuItems.map((item, i) => {
+      if (i === index) {
+        item = menu;
+      }
+      return item;
+    });
+
+    setMenuItems(updatedMenuItems);
+  };
+
   return (
     <div className="app">
       <Header
@@ -39,7 +51,13 @@ const App = () => {
       />
       <div className="menu-list">
         {menuItems.map((menu, index) => (
-          <Menu menu={menu} key={index} index={index} />
+          <Menu
+            menu={menu}
+            key={index}
+            index={index}
+            handleRemoveMenu={handleRemoveMenu}
+            handleEditMenu={handleEditMenu}
+          />
         ))}
       </div>
     </div>

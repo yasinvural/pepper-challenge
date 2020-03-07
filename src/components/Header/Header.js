@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import { PageHeader, Button, Modal, Input, Popconfirm } from "antd";
+import { PageHeader, Button, Input, Popconfirm, message } from "antd";
+import ModalCreater from "../ModalCreater/ModalCreater";
 
 const Header = ({ locationTitle, address, handleEditHeader }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -33,8 +34,9 @@ const Header = ({ locationTitle, address, handleEditHeader }) => {
   const handleSubmitEditForm = e => {
     e.preventDefault();
     if (!copyTitle || !copyAddress) {
-      alert("cannot be null or empty");
+      message.error("title or address cannot be empty");
     } else {
+      message.success("updated");
       handleEditHeader(copyTitle, copyAddress);
       handleCloseEditModal();
     }
@@ -60,10 +62,9 @@ const Header = ({ locationTitle, address, handleEditHeader }) => {
           extra={renderEditButton()}
         />
       </div>
-      <Modal
+      <ModalCreater
         title="Title & Address Update"
         visible={openEditModal}
-        footer={null}
         onCancel={handleCloseEditModal}
       >
         <form onSubmit={handleSubmitEditForm}>
@@ -76,16 +77,14 @@ const Header = ({ locationTitle, address, handleEditHeader }) => {
             <Input value={copyAddress} onChange={handleChangeCopyAddress} />
           </div>
           <div className="modal-footer">
-            <div>
-              <Popconfirm
-                title="Are you sure ?"
-                onConfirm={handleCloseEditModal}
-                okText="Yes"
-                cancelText="No"
-              >
-                <Button>Dismiss</Button>
-              </Popconfirm>
-            </div>
+            <Popconfirm
+              title="Are you sure ?"
+              onConfirm={handleCloseEditModal}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button>Dismiss</Button>
+            </Popconfirm>
             <div className="submit-button">
               <Button type="primary" htmlType="submit">
                 Submit
@@ -93,7 +92,7 @@ const Header = ({ locationTitle, address, handleEditHeader }) => {
             </div>
           </div>
         </form>
-      </Modal>
+      </ModalCreater>
     </>
   );
 };
