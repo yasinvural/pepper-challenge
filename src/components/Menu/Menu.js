@@ -96,7 +96,7 @@ const Menu = ({ menu, index, handleRemoveMenu, handleEditMenu }) => {
         handleCancel={handleCloseEditModal}
       >
         <form onSubmit={handleSubmitEditForm}>
-          <div>
+          <div className="form-input-container">
             <label>Name</label>
             <Input
               name="name"
@@ -104,7 +104,7 @@ const Menu = ({ menu, index, handleRemoveMenu, handleEditMenu }) => {
               onChange={updateValue}
             />
           </div>
-          <div>
+          <div className="form-input-container">
             <label>Description</label>
             <Input
               name="description"
@@ -112,57 +112,71 @@ const Menu = ({ menu, index, handleRemoveMenu, handleEditMenu }) => {
               onChange={updateValue}
             />
           </div>
-          <div>
+          <div className="form-input-container">
             <label>Price</label>
-            <InputNumber
-              value={value && value.price}
-              onChange={e => updateValue(e, "price")}
-            />
+            <div>
+              <InputNumber
+                value={value && value.price}
+                onChange={e => updateValue(e, "price")}
+              />
+            </div>
           </div>
-          <div>
+          <div className="form-input-container">
             <label>Quantity</label>
-            <InputNumber
-              value={value && value.quantity}
-              onChange={e => updateValue(e, "quantity")}
-            />
+            <div>
+              <InputNumber
+                value={value && value.quantity}
+                onChange={e => updateValue(e, "quantity")}
+              />
+            </div>
           </div>
-          <div>
+          <div className="form-input-container">
             <Collapse>
               <Panel header="Nutrional Information">
                 <div>
                   <label>Calories</label>
-                  <InputNumber
-                    value={value && value.nutritionalInformation.calories}
-                    onChange={e => updateValue(e, "calories")}
-                  />
+                  <div>
+                    <InputNumber
+                      value={value && value.nutritionalInformation.calories}
+                      onChange={e => updateValue(e, "calories")}
+                    />
+                  </div>
                 </div>
                 <div>
                   <label>Fat</label>
-                  <InputNumber
-                    value={value && value.nutritionalInformation.fat}
-                    onChange={e => updateValue(e, "fat")}
-                  />
+                  <div>
+                    <InputNumber
+                      value={value && value.nutritionalInformation.fat}
+                      onChange={e => updateValue(e, "fat")}
+                    />
+                  </div>
                 </div>
                 <div>
                   <label>Saturated Fat</label>
-                  <InputNumber
-                    value={value && value.nutritionalInformation.saturatedFat}
-                    onChange={e => updateValue(e, "saturatedFat")}
-                  />
+                  <div>
+                    <InputNumber
+                      value={value && value.nutritionalInformation.saturatedFat}
+                      onChange={e => updateValue(e, "saturatedFat")}
+                    />
+                  </div>
                 </div>
                 <div>
                   <label>Sugars</label>
-                  <InputNumber
-                    value={value && value.nutritionalInformation.sugars}
-                    onChange={e => updateValue(e, "sugars")}
-                  />
+                  <div>
+                    <InputNumber
+                      value={value && value.nutritionalInformation.sugars}
+                      onChange={e => updateValue(e, "sugars")}
+                    />
+                  </div>
                 </div>
                 <div>
                   <label>Salt</label>
-                  <InputNumber
-                    value={value && value.nutritionalInformation.salt}
-                    onChange={e => updateValue(e, "salt")}
-                  />
+                  <div>
+                    <InputNumber
+                      value={value && value.nutritionalInformation.salt}
+                      onChange={e => updateValue(e, "salt")}
+                    />
+                  </div>
                 </div>
               </Panel>
             </Collapse>

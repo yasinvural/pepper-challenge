@@ -11,3 +11,7 @@
 .horizontal-line {
   border: 1px solid #ccc;
 }
+
+.form-input-container {
+  margin: 1rem;
+}

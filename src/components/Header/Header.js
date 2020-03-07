@@ -68,11 +68,11 @@ const Header = ({ locationTitle, address, handleEditHeader }) => {
         handleCancel={handleCloseEditModal}
       >
         <form onSubmit={handleSubmitEditForm}>
-          <div>
+          <div className="form-input-container">
             <label>Title</label>
             <Input value={copyTitle} onChange={handleChangeCopyTitle} />
           </div>
-          <div>
+          <div className="form-input-container">
             <label>Address</label>
             <Input value={copyAddress} onChange={handleChangeCopyAddress} />
           </div>
