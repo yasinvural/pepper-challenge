@@ -29,11 +29,13 @@ export const useInput = initialValue => {
           ...menu,
           price: value
         }));
+        break;
       case "quantity":
         setValue(menu => ({
           ...menu,
           quantity: value
         }));
+        break;
       case "calories":
         setValue(menu => ({
           ...menu,
